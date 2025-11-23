@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,4 +12,56 @@
 
     <script type="module" src="/src/main.jsx"></script>
   </body>
+=======
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>WeLive - Videollamada</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <script src="https://kit.fontawesome.com/yourkit.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <aside id="sidebar">
+    <h2>Usuarios en línea</h2>
+    <ul id="userList"></ul>
+  </aside>
+
+  <main>
+    <header>
+      <h1>WeLive Videollamada</h1>
+      <div class="theme-switcher">
+        <label for="theme-select">🌙</label>
+        <select id="theme-select">
+          <option value="auto">Auto</option>
+          <option value="light">Claro</option>
+          <option value="dark">Oscuro</option>
+        </select>
+      </div>
+    </header>
+
+    <section id="videos">
+      <video id="localVideo" autoplay muted></video>
+    </section>
+
+    <section id="controls">
+      <input type="text" id="roomInput" placeholder="Nombre de sala" />
+      <button id="joinBtn"><i class="fas fa-sign-in-alt"></i> Unirse</button>
+      <button id="toggleMicBtn"><i class="fas fa-microphone-slash"></i> Mic</button>
+      <button id="shareScreenBtn"><i class="fas fa-desktop"></i> Compartir</button>
+    </section>
+
+    <section id="chatContainer">
+      <div id="chatMessages"></div>
+      <form id="chatForm">
+        <input type="text" id="chatInput" placeholder="Escribe un mensaje..." />
+        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+      </form>
+    </section>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/script.js" defer></script>
+</body>
+>>>>>>> 1c46325ae8a756423ca3a3a1a61321be3c886904
 </html>

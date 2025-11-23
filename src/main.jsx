@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // main.jsx
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -39,5 +40,15 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
     </Routes>
   </BrowserRouter>
+=======
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import './styles/theme.css';
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+>>>>>>> 1c46325ae8a756423ca3a3a1a61321be3c886904
   </React.StrictMode>
 );
