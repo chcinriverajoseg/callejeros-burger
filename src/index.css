@@ -1,0 +1,18 @@
+
+@import "./styles/colors.css";
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #FFF9F2;
+  --bg2: #FFEEDD;
+  --accent: #fa07da;   /* rojo gourmet */
+  --accent-dark: #fa07da;
+  --text: #0A0A0A;
+  --card: #ecf1f3;
+  --card-border: rgba(0,0,0,0.05);
+}

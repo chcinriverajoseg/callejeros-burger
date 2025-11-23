@@ -1,0 +1,18 @@
+:root {
+  --bg: #FFF6E5;
+  --text: #0A0A0A;
+  --primary: #FF8A00;   /* Naranja principal */
+  --secondary: #FFD28A; /* Amarillo suave */
+  --accent: #FE4F00;    /* Detalles intensos */
+  --card: #FFFFFF;
+}
+
+/* Tema oscuro */
+.dark {
+  --bg: #1A1A1A;
+  --text: #F5F5F5;
+  --primary: #FF8A00;
+  --secondary: #B36B00;
+  --accent: #FF6200;
+  --card: #2A2A2A;
+}
