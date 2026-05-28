@@ -11,9 +11,9 @@ const images = [
 
 export default function GallerySection() {
   return (
-    <section className="py-24 bg-black text-white">
+    <section id="galeria" className="py-24 bg-black text-white">
       <div className="max-w-6xl mx-auto px-6">
-        
+
         <h2 className="text-4xl font-extrabold text-center">
           Nuestra <span className="text-red-500">Galería</span>
         </h2>
@@ -29,13 +29,15 @@ export default function GallerySection() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4 }}
+              transition={{ duration: 0.4, delay: i * 0.06 }}
               whileHover={{ scale: 1.05 }}
               className="overflow-hidden rounded-xl shadow-lg"
             >
               <img
                 src={src}
+                alt={`Galería ${i + 1}`}
                 className="w-full h-40 md:h-52 object-cover hover:scale-110 transition-all duration-500"
+                loading="lazy"
               />
             </motion.div>
           ))}

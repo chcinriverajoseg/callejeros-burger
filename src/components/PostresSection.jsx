@@ -1,42 +1,57 @@
-import { motion } from "framer-motion";
-import postresData from "../data/postresData";
-
+/*import { motion } from "framer-motion";
+import { useContext } from "react";
+import { CartContext } from "./cart/CartContext";
+import { productos } from "../data/products";
 
 export default function PostresSection() {
-  const postres = [
-    { name: "Brownie", price: "$2.000" },
-    { name: "Helado", price: "$1.800" },
-    { name: "Torta de Chocolate", price: "$2.500" },
-    { name: "Cheesecake", price: "$2.800" },
-  ];
+  const { addToCart } = useContext(CartContext);
+  const postres = productos.filter((p) => p.category === "postres");
 
   return (
-    <section id="postres" className="py-16 bg-gradient-to-b from-[#0f0f0f] to-[#1a1a1a]">
+    <section id="postres" className="py-20 bg-[#1f2937] text-white">
       <div className="max-w-6xl mx-auto px-6">
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-3xl font-bold text-white text-center mb-10"
-        >
+        <h2 className="text-4xl font-extrabold text-center text-[#fbbf24] mb-12">
           Postres
-        </motion.h2>
+        </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {postres.map((item, i) => (
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-10">
+          {postres.map((p) => (
             <motion.div
-              key={i}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="p-6 bg-white/10 backdrop-blur-lg border border-white/10 rounded-2xl shadow-lg hover:shadow-xl hover:scale-[1.03] transition cursor-pointer"
+              key={p.id}
+              whileHover={{ scale: 1.05 }}
+              className="bg-white/10 backdrop-blur-lg border border-white/10 rounded-xl shadow-lg overflow-hidden flex flex-col"
             >
-              <h3 className="text-xl text-white font-semibold">{item.name}</h3>
-              <p className="text-[#D7263D] font-bold mt-2">{item.price}</p>
+              <img src={p.image} alt={p.name} className="w-full h-40 object-cover" />
+              <div className="p-5 flex flex-col flex-1">
+                <h3 className="text-xl font-bold">{p.name}</h3>
+                <p className="text-[#fbbf24] font-semibold mt-2">${p.price}</p>
+                <button
+                  className="mt-auto bg-red-600 text-white px-4 py-2 rounded font-semibold"
+                  onClick={() => addToCart(p)}
+                >
+                  Añadir al carrito
+                </button>
+              </div>
             </motion.div>
           ))}
         </div>
       </div>
     </section>
+  );
+}
+*/
+
+
+
+import ProductSection from "./ProductSection";
+
+export default function PostresSection() {
+  return (
+    <ProductSection
+      id="postres"
+      category="postres"
+      title="Postres"
+      bg="bg-[#1f2937]"
+    />
   );
 }

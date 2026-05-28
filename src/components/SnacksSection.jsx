@@ -1,43 +1,57 @@
-import { motion } from "framer-motion";
-import snacksData from "../data/snacksData";
-
-
+/*import { motion } from "framer-motion";
+import { useContext } from "react";
+import { CartContext } from "./cart/CartContext";
+import { productos } from "../data/products";
 
 export default function SnacksSection() {
-  const snacks = [
-    { name: "Papas Fritas", price: "$2.000" },
-    { name: "Tequeños", price: "$3.500" },
-    { name: "Nuggets", price: "$3.000" },
-    { name: "Aros de Cebolla", price: "$2.500" },
-  ];
+  const { addToCart } = useContext(CartContext);
+  const snacks = productos.filter((p) => p.category === "snacks");
 
   return (
-    <section id="snacks" className="py-16 bg-gradient-to-b from-[#1a1a1a] to-[#0f0f0f]">
+    <section id="snacks" className="py-20 bg-[#111214] text-white">
       <div className="max-w-6xl mx-auto px-6">
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-3xl font-bold text-white text-center mb-10"
-        >
+        <h2 className="text-4xl font-extrabold text-center text-[#fbbf24] mb-12">
           Snacks
-        </motion.h2>
+        </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {snacks.map((item, i) => (
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-10">
+          {snacks.map((p) => (
             <motion.div
-              key={i}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="p-6 bg-white/10 backdrop-blur-lg border border-white/10 rounded-2xl shadow-lg hover:shadow-xl hover:scale-[1.03] transition cursor-pointer"
+              key={p.id}
+              whileHover={{ scale: 1.05 }}
+              className="bg-white/10 backdrop-blur-lg border border-white/10 rounded-xl shadow-lg overflow-hidden flex flex-col"
             >
-              <h3 className="text-xl text-white font-semibold">{item.name}</h3>
-              <p className="text-[#D7263D] font-bold mt-2">{item.price}</p>
+              <img src={p.image} alt={p.name} className="w-full h-40 object-cover" />
+              <div className="p-5 flex flex-col flex-1">
+                <h3 className="text-xl font-bold">{p.name}</h3>
+                <p className="text-[#fbbf24] font-semibold mt-2">${p.price}</p>
+                <button
+                  className="mt-auto bg-red-600 text-white px-4 py-2 rounded font-semibold"
+                  onClick={() => addToCart(p)}
+                >
+                  Añadir al carrito
+                </button>
+              </div>
             </motion.div>
           ))}
         </div>
       </div>
     </section>
+  );
+}
+*/  
+
+
+
+import ProductSection from "./ProductSection";
+
+export default function SnacksSection() {
+  return (
+    <ProductSection
+      id="snacks"
+      category="snacks"
+      title="Snacks"
+      bg="bg-[#111214]"
+    />
   );
 }

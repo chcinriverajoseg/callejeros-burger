@@ -1,128 +1,150 @@
-<<<<<<< HEAD
-// App.jsx
-import React from "react";
+/*import React, { useState, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ShoppingCart } from "lucide-react";
 
+import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Menu from "./components/Menu";
 import Combos from "./components/Combos";
-import Promos from "./components/Promos";
-import CTA from "./components/CTA";
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
-import Contacto from "./components/Contacto";
-import Testimonials from "./components/Testimonials";
-import WhatsAppButton from "./components/WhatsAppButton";
-import Schedule from "./components/Schedule";
-import Gallery from "./components/Gallery";
-import Reserva from "./components/Reserva";
-
 import DrinksSection from "./components/DrinksSection";
 import SnacksSection from "./components/SnacksSection";
 import PostresSection from "./components/PostresSection";
+import Promos from "./components/Promos";
+import Gallery from "./components/Gallery";
+import Testimonials from "./components/Testimonials";
+import Schedule from "./components/Schedule";
+import Reserva from "./components/Reserva";
+import CTA from "./components/CTA";
+import Contacto from "./components/Contacto";
+import Footer from "./components/Footer";
 
-import WhatsAppFloatButton from "./components/WhatsAppFloatButton";
-import ReservaButton from "./components/ReservaButton";
-import WhatsAppReservaButton from "./components/WhatsAppReservaButton";
-import WhatsAppReservaButtonAnimated from "./components/WhatsAppReservaButtonAnimated";
-import WhatsAppReservaButtonPremium from "./components/WhatsAppReservaButtonPremium";
-import WhatsAppReservaButtonTooltip from "./components/WhatsAppReservaButtonTooltip";
 import FloatingActionMenu from "./components/FloatingActionMenu";
-
 import ThemeToggle from "./components/ThemeToggle";
 
-// 🛒 Carrito
 import { CartProvider } from "./components/cart/CartContext";
 import CartButton from "./components/cart/CartButton";
 import CartSidebar from "./components/cart/CartSidebar";
 
 export default function App() {
-  const [open, setOpen] = React.useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
+  const [toast, setToast] = useState(null); // { name: string }
+
+  const handleAddToCart = useCallback((product) => {
+    // Abrir el carrito si estaba cerrado
+    setCartOpen(true);
+
+    // Mostrar toast
+    setToast({ name: product.name });
+    setTimeout(() => setToast(null), 2500);
+  }, []);
 
   return (
-    <div className="bg-gradient-to-b from-[#FFF9F2] via-[#FFEEDD] to-[#F7E2D4] text-[#0A0A0A]">
+    <CartProvider onAdd={handleAddToCart}>
+      <div className="bg-gradient-to-b from-[#FFF9F2] via-[#FFEEDD] to-[#F7E2D4] text-[#0A0A0A]">
 
-      <CartProvider>
-        <ThemeToggle />
+        {/* ── NAVEGACIÓN ── *//*}
         <Navbar />
+
+        {/* ── SECCIONES PRINCIPALES ── *//*}
         <Hero />
         <About />
         <Menu />
         <Combos />
-        <Promos />
-        <CTA />
-
         <DrinksSection />
         <SnacksSection />
         <PostresSection />
-
-        <ReservaButton />
-        <WhatsAppReservaButton />
-        <FloatingActionMenu />
-
-        <Footer />
-        <Contacto />
-        <Testimonials />
-        <WhatsAppButton />
-        <WhatsAppFloatButton />
-        <Schedule />
+        <Promos />
         <Gallery />
+        <Testimonials />
+        <Schedule />
         <Reserva />
+        <CTA />
+        <Contacto />
 
-        <WhatsAppReservaButtonAnimated />
-        <WhatsAppReservaButtonPremium />
-        <WhatsAppReservaButtonTooltip />
+        {/* ── PIE DE PÁGINA ── *//*}
+        <Footer />
 
-        {/* Botón del carrito */}
-        <CartButton onOpen={() => setOpen(true)} />
+        {/* ── ELEMENTOS FLOTANTES ── *//*}
+        <ThemeToggle />
+        <FloatingActionMenu />
+        <CartButton onOpen={() => setCartOpen(true)} />
+        <CartSidebar open={cartOpen} onClose={() => setCartOpen(false)} />
 
-        {/* Sidebar del carrito */}
-        <CartSidebar open={open} onClose={() => setOpen(false)} />
-      </CartProvider>
+        {/* ── TOAST de confirmación ── *//*}
+        <AnimatePresence>
+          {toast && (
+            <motion.div
+              key="toast"
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 20, scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 25 }}
+              className="fixed bottom-24 left-1/2 -translate-x-1/2 z-[60] flex items-center gap-3 bg-[#111] text-white px-5 py-3 rounded-2xl shadow-2xl"
+            >
+              <ShoppingCart className="w-4 h-4 text-red-400 flex-shrink-0" />
+              <span className="text-sm font-semibold">
+                <span className="text-red-400">{toast.name}</span> añadido al carrito
+              </span>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-    </div>
-=======
-import { useState } from "react";
-import { ThemeProvider } from "@emotion/react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+      </div>
+    </CartProvider>
+  );
+}*/
+
+
+
+
+
+
+
+// src/App.jsx
+import Navbar          from "./components/Navbar";
+import Hero            from "./components/Hero";
+import About           from "./components/About";
+import Menu            from "./components/Menu";
+import Combos          from "./components/Combos";
+import DrinksSection   from "./components/DrinksSection";
+import SnacksSection   from "./components/SnacksSection";
+import PostresSection  from "./components/PostresSection";
+import Promos          from "./components/Promos";
+import Gallery         from "./components/Gallery";
+import Testimonials    from "./components/Testimonials";
+import Schedule        from "./components/Schedule";
+import Reserva         from "./components/Reserva";
+import CTA             from "./components/CTA";
+import Contacto        from "./components/Contacto";
+import Footer          from "./components/Footer";
+import FloatingActionMenu from "./components/FloatingActionMenu";
+import ThemeToggle     from "./components/ThemeToggle";
 
 export default function App() {
-  const [room, setRoom] = useState("");
-  const [joined, setJoined] = useState(false);
-
-  const handleJoin = () => {
-    if (room.trim() !== "") {
-      setJoined(true);
-    }
-  };
-
   return (
-    <ThemeProvider>
-      <div className="min-h-screen bg-background text-foreground p-4 flex flex-col items-center justify-center gap-6">
-        <h1 className="text-3xl font-bold">Videollamada - Chacín</h1>
-
-        {!joined ? (
-          <Card className="w-full max-w-md">
-            <CardContent className="flex flex-col gap-4">
-              <input
-                type="text"
-                placeholder="Nombre de la sala"
-                className="px-4 py-2 border rounded-md"
-                value={room}
-                onChange={(e) => setRoom(e.target.value)}
-              />
-              <Button onClick={handleJoin}>Unirse a la sala</Button>
-            </CardContent>
-          </Card>
-        ) : (
-          <div className="w-full max-w-4xl">
-            {/* Aquí irá la interfaz de videollamada */}
-            <p className="text-lg">Conectado a la sala: <strong>{room}</strong></p>
-          </div>
-        )}
-      </div>
-    </ThemeProvider>
->>>>>>> 1c46325ae8a756423ca3a3a1a61321be3c886904
+    <div className="bg-gradient-to-b from-[#FFF9F2] via-[#FFEEDD] to-[#F7E2D4] text-[#0A0A0A]">
+      <Navbar />
+      <Hero />
+      <About />
+      <Menu />
+      <Combos />
+      <DrinksSection />
+      <SnacksSection />
+      <PostresSection />
+      <Promos />
+      <Gallery />
+      <Testimonials />
+      <Schedule />
+      <Reserva />
+      <CTA />
+      <Contacto />
+      <Footer />
+      <ThemeToggle />
+      <FloatingActionMenu />
+    </div>
   );
 }
+
+
+

@@ -1,88 +1,116 @@
-<<<<<<< HEAD
-
 @import "./styles/colors.css";
-
-
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ── VARIABLES BASE ── */
 :root {
-  --bg: #FFF9F2;
-  --bg2: #FFEEDD;
-  --accent: #fa07da;   /* rojo gourmet */
-  --accent-dark: #fa07da;
-  --text: #0A0A0A;
-  --card: #ecf1f3;
-  --card-border: rgba(0,0,0,0.05);
-=======
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --bg:           #FFF9F2;
+  --bg2:          #FFEEDD;
+  --text:         #0A0A0A;
+  --text-muted:   #6B7280;
+  --card:         #FFFFFF;
+  --card-border:  rgba(0,0,0,0.06);
+  --primary:      #FF8A00;
+  --accent:       #D63426;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/* ── DARK MODE ── */
+.dark {
+  --bg:           #111214;
+  --bg2:          #1A1A1A;
+  --text:         #F5F5F5;
+  --text-muted:   #9CA3AF;
+  --card:         #1E1E1E;
+  --card-border:  rgba(255,255,255,0.08);
+  --primary:      #FF8A00;
+  --accent:       #EF4444;
 }
 
+/* ── RESET ── */
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* ── DARK MODE GLOBAL — secciones con bg hardcodeado ── */
+
+/* Secciones oscuras del home — se invierten en light mode */
+.dark .dark\:bg-section {
+  background-color: #1a1a1a !important;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+/* Fondo principal del sitio */
+.dark #root > div,
+.dark .app-bg {
+  background: linear-gradient(to bottom, #111214, #1a1a1a, #1e1e1e) !important;
+  color: var(--text);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
->>>>>>> 1c46325ae8a756423ca3a3a1a61321be3c886904
+/* Cards de productos */
+.dark .bg-white {
+  background-color: var(--card) !important;
+  color: var(--text) !important;
 }
+
+/* Textos grises en cards */
+.dark .text-gray-500,
+.dark .text-gray-600,
+.dark .text-gray-700 {
+  color: var(--text-muted) !important;
+}
+
+.dark .text-gray-900,
+.dark .text-gray-800 {
+  color: var(--text) !important;
+}
+
+/* Bordes */
+.dark .border-gray-100,
+.dark .border-gray-200,
+.dark .border-gray-300 {
+  border-color: var(--card-border) !important;
+}
+
+/* Inputs */
+.dark input,
+.dark textarea,
+.dark select {
+  background-color: #2a2a2a !important;
+  color: var(--text) !important;
+  border-color: rgba(255,255,255,0.15) !important;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: var(--text-muted) !important;
+}
+
+/* Sombras — más sutiles en dark */
+.dark .shadow-lg,
+.dark .shadow-xl,
+.dark .shadow-2xl {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4) !important;
+}
+
+/* Fondos de sección claros */
+.dark .bg-\[\#FFF6E5\],
+.dark .bg-\[\#FFF9F2\],
+.dark .bg-\[\#FFEEDD\] {
+  background-color: var(--bg) !important;
+}
+
+.dark .bg-white\/10 {
+  background-color: rgba(255,255,255,0.05) !important;
+}
+
+/* ── ANIMACIONES ── */
+@keyframes slide-left {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+.animate-slide-left { animation: slide-left 0.3s ease-out; }
